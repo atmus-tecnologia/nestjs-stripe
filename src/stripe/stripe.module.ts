@@ -19,6 +19,7 @@ export class StripeModule {
   }
 
   static registerAsync(options: StripeModuleAsyncOptions): DynamicModule {
+    if (!options.useFactory) throw new Error('StripeModule.registerAsync requires useFactory');
     const asyncProviders = this.createAsyncProviders(options);
     return {
       module: StripeModule,
